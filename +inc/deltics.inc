@@ -84,6 +84,21 @@
   {$UNDEF UNKNOWN_COMPILER_VERSION}
 {$endif VER290}
 
+{$ifdef VER300} // Seattle
+  {$define DELPHISEATTLE}
+  {$UNDEF UNKNOWN_COMPILER_VERSION}
+{$endif VER300}
+
+{$ifdef VER310} // Berlin
+  {$define DELPHIBERLIN}
+  {$UNDEF UNKNOWN_COMPILER_VERSION}
+{$endif VER300}
+
+{$ifdef VER320} // TOKYO
+  {$define DELPHITOKYO}
+  {$UNDEF UNKNOWN_COMPILER_VERSION}
+{$endif VER320}
+
 (*
   Template for adding support for new versions of Delphi as they come along.
    Don't forget to also update XX_OR_LATER and XX_OR_EARLIER section! (below)
@@ -103,6 +118,9 @@
 { ------------------------------------------------------------------------------------------------ }
 
 {.$define DELPHI NEW _OR_EARLIER}
+{$define DELPHITOKYO_OR_EARLIER}
+{$define DELPHIBERLIN_OR_EARLIER}
+{$define DELPHISEATTLE_OR_EARLIER}
 {$define DELPHIXE8_OR_EARLIER}
 {$define DELPHIXE7_OR_EARLIER}
 {$define DELPHIXE6_OR_EARLIER}
@@ -119,6 +137,9 @@
 {$define DELPHI7_OR_EARLIER}
 
 (* {$ifdef DELPHI NEW}  {$define DELPHI NEW _OR_LATER} {$endif} *)
+{$ifdef DELPHITOKYO}  {$define DELPHITOKYO_OR_LATER} {$endif}
+{$ifdef DELPHIBERLIN}  {$define DELPHIBERLIN_OR_LATER} {$endif}
+{$ifdef DELPHISEATTLE}  {$define DELPHISEATTLE_OR_LATER} {$endif}
 {$ifdef DELPHIXE8}  {$define DELPHIXE8_OR_LATER} {$endif}
 {$ifdef DELPHIXE7}  {$define DELPHIXE7_OR_LATER} {$endif}
 {$ifdef DELPHIXE6}  {$define DELPHIXE6_OR_LATER} {$endif}
@@ -135,6 +156,9 @@
 {$ifdef DELPHI7}    {$define DELPHI7_OR_LATER} {$endif}
 
 (* {$ifdef DELPHI NEW _OR_LATER}   {$define DELPHI PREV _OR_LATER}  {$undef DELPHI PREV _OR_EARLIER}  {$endif} *)
+{$ifdef DELPHITOKYO_OR_LATER}   {$define DELPHIBERLIN_OR_LATER}  {$undef DELPHIBERLIN_OR_EARLIER}  {$endif}
+{$ifdef DELPHIBERLIN_OR_LATER}   {$define DELPHISEATTLE_OR_LATER}  {$undef DELPHISEATTLE_OR_EARLIER}  {$endif}
+{$ifdef DELPHISEATTLE_OR_LATER}   {$define DELPHIXE8_OR_LATER}  {$undef DELPHIXE8_OR_EARLIER}  {$endif}
 {$ifdef DELPHIXE8_OR_LATER}   {$define DELPHIXE7_OR_LATER}  {$undef DELPHIXE7_OR_EARLIER}  {$endif}
 {$ifdef DELPHIXE7_OR_LATER}   {$define DELPHIXE6_OR_LATER}  {$undef DELPHIXE6_OR_EARLIER}  {$endif}
 {$ifdef DELPHIXE6_OR_LATER}   {$define DELPHIXE5_OR_LATER}  {$undef DELPHIXE5_OR_EARLIER}  {$endif}
